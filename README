@@ -1,0 +1,91 @@
+SAMPLE DATA FILES 
+These sample files are from the actual dataset which is private
+1) MT_321_120501_Direct_d500k.vcf
+sample .vcf file
+
+2) information file
+ROSMAP_SamplesInfoForMito.txt
+
+CODE AND CORRESPONDING RESULT FILES
+#################
+PART 1 - global statistics
+1)test1.R
+extracts relevant features from the .vcf files and index file
+Output files:
+ADindRat.txt
+NADindRat.txt
+
+
+2) stats_Test.R
+computes basic statistics on output of 1)
+
+
+3) hyp_test_new.R
+doing all the hypothesis testing described in the paper
+
+
+4) ml_test.R
+machine learning
+a) plotting raw data
+b) logistic / probit regression with the 70-30 train test split
+
+5) ml_part2.R
+generating the ROC curve with LOOCV
+
+
+6) pmi_test.R
+testing whether the metadata variable 'post-mortem interval' is related to AD/NAD with t-test.
+
+############
+PART 2
+RARE AND COMMON MUTATIONS
+
+7) rarecommon_test.R
+obtaining information (by thresholding; <=3 -> rare) of rare and common mutations
+Output:
+mutation_info.txt
+commonmutation_info3.txt
+raremutation_info_thresh3.txt
+
+8) rarecommon2_test.R
+go through each .vcf file and count number of rare mutations in it. also check if AD or not; 
+ouput:
+ADind_withrare_thresh3.txt
+NADind_withrare_thresh3.txt
+
+9) stats_rare.R
+computer simple stats on rare mutation information
+
+
+10) hyp_test_rare.R
+hypothesis testing AD/NAD and total number of rare mutations in the cell
+
+11) common.R
+building file of containing binary indicator vector for presence/absence for each common mutation
+output:
+ADind_common3.txt
+NADind_common3.txt
+
+12) stats_common.R
+compute simple stats on common mutations for each mutated position
+
+13) hyp_common.R
+hypothesis testing for each common mutation
+
+
+##########################
+PART 3
+14) number_mit.R
+obtaining number of mitochondria (estimate from average read depth) for each cell which contains a mutation (rare and/or common)
+output:
+AD_mitCount.txt
+NAD_mitCount.txt
+
+15) stats_mit.R
+simple statistics on the results of 14)
+
+15) correln_mit
+spearmann2 correlation coefficient for each mutation and read depth
+
+
+
